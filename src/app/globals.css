@@ -18,11 +18,10 @@ body {
 }
 
 @theme {
-
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --font-default: var(--font-syne-mono);
-  
+  --font-default: var(--font-default);
 }
 

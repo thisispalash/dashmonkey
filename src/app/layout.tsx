@@ -3,7 +3,7 @@ import { Syne_Mono } from 'next/font/google';
 import './globals.css';
 
 const syneMono = Syne_Mono({
-  variable: '--font-syne-mono',
+  variable: '--font-default',
   subsets: ['latin'],
   weight: ['400'],
 });
@@ -23,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/circus-monkey.svg" />
       <body
         className={`
           ${syneMono.variable} 

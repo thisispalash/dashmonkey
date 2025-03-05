@@ -1,101 +1,183 @@
-import Image from "next/image";
+'use client';
+
+import clsx from 'clsx';
+import Image from 'next/image';
+import { useState } from 'react';
+
+import Icon from '@/component/icons/base';
+import InfoSVG from '@/component/icons/InfoSVG';
+import GithubSVG from '@/component/icons/GithubSVG';
+import DiscordSVG from '@/component/icons/DiscordSVG';
+
+import TextInput from '@/component/primitive/TextInput';
+import Button from '@/component/primitive/Button';
+import Link from '@/component/primitive/Link';
+
+import BaseModal from '@/component/modal/base';
+import InfoModal from '@/component/modal/InfoModal';
+
+function ComingSoonModal({ isOpen, onClose, children }: { isOpen: boolean, onClose: () => void, children: React.ReactNode }) {
+
+  return (
+    <BaseModal isOpen={isOpen} onClose={onClose} title="Coming Soon">
+      {children}
+    </BaseModal>
+  );
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  const [ isInfoOpen, setIsInfoOpen ] = useState(false);
+  const [ isCommunityOpen, setIsCommunityOpen ] = useState(false);
+
+  const [ email, setEmail ] = useState('');
+  const [ submitting, setSubmitting ] = useState(false);
+  const [ submitted, setSubmitted ] = useState(false);
+
+  const handleSubmit = async () => {
+    setSubmitting(true);
+
+    const response = await fetch('/api/interested', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      setEmail('Thanks for your interest!')
+      setSubmitting(false);
+    } else {
+      setSubmitting(false);
+    }
+  }
+
+
+  return (
+    <main className={clsx(
+      'w-full h-screen',
+      'flex flex-col items-center justify-between',
+      'bg-contain bg-center bg-no-repeat',
+      'bg-[url(/circus-monkey.svg)] md:bg-none',
+      'bg-blend-soft-light bg-white/95'
+    )}>
+
+      <div className={clsx(
+        'w-full pt-12 md:pt-8 pr-8 md:pr-4',
+        'text-2xl text-right',
+        'flex items-end justify-end'
+      )}>
+        <Button
+          onClick={() => setIsInfoOpen(true)}
+          className={clsx(
+            'border-0 !rounded-full !p-0'
+          )}
+        >
+          <Icon as={InfoSVG} size="4xl" />
+        </Button>
+      </div>
+
+      <div className={clsx(
+        'w-full h-auto p-8',
+        'flex flex-row items-center justify-between'
+      )}>
+
+        {/* Content */}
+        <div className={clsx(
+          'w-full md:w-1/2 h-auto px-4 md:pl-16',
+          'flex flex-col gap-4'
+        )}>
+
+          <h1 className={clsx(
+            'w-full',
+            'text-2xl md:text-4xl'
+          )}>
+            Dash Mon[k]ey
+          </h1>
+
+          <div className={clsx(
+            'text-base md:text-lg',
+            'flex flex-col gap-1'
+          )}>
+            <span>An onchain embodiment of your (financial) health,</span>
+            <span className="pl-2">in the form of a pet monkey</span>
+          </div>
+
+          <form className={clsx(
+            'flex flex-col lg:flex-row items-end gap-2'
+          )}>
+
+            <TextInput
+              label=""
+              type="email"
+              value={email}
+              onChange={(value: string) => setEmail(value)}
+              placeholder="Public access coming April 2025"
+              isDisabled={submitting || submitted}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+            <Button
+              onClick={handleSubmit}
+              isDisabled={email.length === 0 || submitting || submitted}
+            >
+              {submitting ? 'Submitting...' : submitted ? 'Email soon!' : 'Get Notified!'}
+            </Button>
+
+          </form>
+
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+
+        {/* Image */}
+        <div className={clsx(
+          'w-1/2 h-auto hidden md:flex',
+          'flex items-center justify-center'
+        )}>
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/circus-monkey.svg"
+            alt="Circus Monkey"
+            width={240}
+            height={240}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+
+      </div>
+
+      <div className={clsx(
+        'w-full px-8 py-4',
+        'flex flex-row items-center justify-between'
+      )}>
+
+        <div className={clsx(
+          'md:hidden',
+          'flex flex-row items-center gap-2'
+        )}>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>
+            <Icon as={DiscordSVG} size="lg" />
+          </Link>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>
+            <Icon as={GithubSVG} size="lg" />
+          </Link>
+        </div>
+
+        <div className={clsx(
+          'hidden md:flex',
+          'flex flex-row items-center gap-3'
+        )}>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>discord</Link>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>github</Link>
+        </div>
+
+        <div className={clsx()}>
+          {/* A product of <Link href="https://theslivers.com" className="inline-flex">Sliver Labs</Link> */}
+          A product of Sliver Labs
+        </div>
+
+      </div>
+
+      <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
+      <ComingSoonModal isOpen={isCommunityOpen} onClose={() => setIsCommunityOpen(false)}>
+        <p>Community access coming April 2025.. Enter your email to get notified!</p>
+      </ComingSoonModal>
+    </main>
   );
 }

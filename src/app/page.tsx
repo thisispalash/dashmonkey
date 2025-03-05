@@ -9,9 +9,9 @@ import InfoSVG from '@/component/icons/InfoSVG';
 import GithubSVG from '@/component/icons/GithubSVG';
 import DiscordSVG from '@/component/icons/DiscordSVG';
 
-import TextInput from '@/component/TextInput';
-import Button from '@/component/Button';
-import Link from '@/component/Link';
+import TextInput from '@/component/primitive/TextInput';
+import Button from '@/component/primitive/Button';
+import Link from '@/component/primitive/Link';
 
 import BaseModal from '@/component/modal/base';
 import InfoModal from '@/component/modal/InfoModal';

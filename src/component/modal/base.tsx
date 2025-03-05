@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 
-import Link from '@/component/Link';
+import Link from '@/component/primitive/Link';
 
 interface BaseModalProps {
   title: string;

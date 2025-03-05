@@ -15,10 +15,18 @@ export default function Link({
   className,
 }: LinkProps) {
 
+  const isButton = href === '#';
+
+  const handleClick = isButton ? (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    onClick?.();
+  } : onClick;
+
   return (
     <a
       href={href}
-      onClick={onClick}
+      role={isButton ? "button" : undefined}
+      onClick={handleClick}
       className={clsx(
         'text-foreground relative group',
         'hover:text-xl hover:no-underline',

@@ -5,6 +5,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import InfoIcon from '@/component/icons/InfoIcon';
+
+import Icon from '@/component/icons/base';
+import InfoSVG from '@/component/icons/InfoSVG';
+import GithubSVG from '@/component/icons/GithubSVG';
+import DiscordSVG from '@/component/icons/DiscordSVG';
+
 import TextInput from '@/component/TextInput';
 import Button from '@/component/Button';
 import Link from '@/component/Link';
@@ -45,7 +51,7 @@ export default function Home() {
     )}>
 
       <div className={clsx(
-        'w-full px-8 py-4',
+        'w-full pt-12 md:pt-8 pr-8 md:pr-4',
         'text-2xl text-right',
         'flex items-end justify-end'
       )}>
@@ -55,7 +61,7 @@ export default function Home() {
             'border-0 !rounded-full !p-0'
           )}
         >
-          <InfoIcon className="text-4xl" />
+          <Icon as={InfoSVG} size="4xl" />
         </Button>
       </div>
 
@@ -66,22 +72,21 @@ export default function Home() {
 
         {/* Content */}
         <div className={clsx(
-          'w-1/2 h-auto pl-16',
+          'w-full md:w-1/2 h-auto pl-4 md:pl-16',
           'flex flex-col gap-4'
         )}>
 
           <h1 className={clsx(
             'w-full',
-            'text-4xl'
+            'text-2xl md:text-4xl'
           )}>
             Dash Mon[k]ey
           </h1>
 
           <div className={clsx(
-            'text-lg',
+            'text-base md:text-lg',
             'flex flex-col gap-1'
           )}>
-
             <span>An onchain embodiment of your (financial) health,</span>
             <span className="pl-2">in the form of a pet monkey</span>
           </div>
@@ -112,7 +117,7 @@ export default function Home() {
 
         {/* Image */}
         <div className={clsx(
-          'w-1/2 h-auto',
+          'w-1/2 h-auto hidden md:flex',
           'flex items-center justify-center'
         )}>
           <Image
@@ -131,6 +136,19 @@ export default function Home() {
       )}>
 
         <div className={clsx(
+          'md:hidden',
+          'flex flex-row items-center gap-2'
+        )}>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>
+            <Icon as={DiscordSVG} size="lg" />
+          </Link>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>
+            <Icon as={GithubSVG} size="lg" />
+          </Link>
+        </div>
+
+        <div className={clsx(
+          'hidden md:flex',
           'flex flex-row items-center gap-3'
         )}>
           <Link href="#" onClick={() => setIsCommunityOpen(true)}>discord</Link>
@@ -138,7 +156,7 @@ export default function Home() {
         </div>
 
         <div className={clsx()}>
-          A product of <Link href="https://theslivers.xyz" onClick={() => {}}>Sliver Labs</Link>
+          A product of <Link href="https://theslivers.xyz" onClick={() => {}}className="inline-flex">Sliver Labs</Link>
         </div>
 
       </div>

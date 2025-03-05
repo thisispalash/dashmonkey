@@ -28,6 +28,7 @@ export default function Link({
       role={isButton ? "button" : undefined}
       onClick={handleClick}
       className={clsx(
+        'flex items-center justify-center',
         'text-foreground relative group',
         'hover:text-xl hover:no-underline',
         'transition-all duration-300 ease-in-out',

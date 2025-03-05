@@ -4,8 +4,6 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import InfoIcon from '@/component/icons/InfoIcon';
-
 import Icon from '@/component/icons/base';
 import InfoSVG from '@/component/icons/InfoSVG';
 import GithubSVG from '@/component/icons/GithubSVG';
@@ -36,7 +34,14 @@ export default function Home() {
   const [ submitting, setSubmitting ] = useState(false);
   const [ submitted, setSubmitted ] = useState(false);
 
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = () => {
+    if (!isValidEmail(email)) return;
+    
     setSubmitting(true);
     setSubmitted(true);
     setEmail('Thanks for your interest!')
@@ -47,7 +52,10 @@ export default function Home() {
   return (
     <main className={clsx(
       'w-full h-screen',
-      'flex flex-col items-center justify-between'
+      'flex flex-col items-center justify-between',
+      'bg-contain bg-center bg-no-repeat',
+      'bg-[url(/circus-monkey.svg)] md:bg-none',
+      'bg-blend-soft-light bg-white/95'
     )}>
 
       <div className={clsx(
@@ -72,7 +80,7 @@ export default function Home() {
 
         {/* Content */}
         <div className={clsx(
-          'w-full md:w-1/2 h-auto pl-4 md:pl-16',
+          'w-full md:w-1/2 h-auto px-4 md:pl-16',
           'flex flex-col gap-4'
         )}>
 
@@ -91,12 +99,13 @@ export default function Home() {
             <span className="pl-2">in the form of a pet monkey</span>
           </div>
 
-          <div className={clsx(
-            'flex flex-row items-start gap-2'
+          <form className={clsx(
+            'flex flex-col lg:flex-row items-end gap-2'
           )}>
 
             <TextInput
               label=""
+              type="email"
               value={email}
               onChange={(value: string) => setEmail(value)}
               placeholder="Public access coming April 2025"
@@ -110,7 +119,7 @@ export default function Home() {
               {submitting ? 'Submitting...' : submitted ? 'Email soon!' : 'Get Notified!'}
             </Button>
 
-          </div>
+          </form>
 
         </div>
 
@@ -156,7 +165,8 @@ export default function Home() {
         </div>
 
         <div className={clsx()}>
-          A product of <Link href="https://theslivers.xyz" onClick={() => {}}className="inline-flex">Sliver Labs</Link>
+          {/* A product of <Link href="https://theslivers.com" className="inline-flex">Sliver Labs</Link> */}
+          A product of Sliver Labs
         </div>
 
       </div>

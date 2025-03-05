@@ -34,18 +34,21 @@ export default function Home() {
   const [ submitting, setSubmitting ] = useState(false);
   const [ submitted, setSubmitted ] = useState(false);
 
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleSubmit = () => {
-    if (!isValidEmail(email)) return;
-    
+  const handleSubmit = async () => {
     setSubmitting(true);
-    setSubmitted(true);
-    setEmail('Thanks for your interest!')
-    setSubmitting(false);
+
+    const response = await fetch('/api/interested', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+
+    if (response.ok) {
+      setSubmitted(true);
+      setEmail('Thanks for your interest!')
+      setSubmitting(false);
+    } else {
+      setSubmitting(false);
+    }
   }
 
 

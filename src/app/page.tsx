@@ -9,9 +9,23 @@ import TextInput from '@/component/TextInput';
 import Button from '@/component/Button';
 import Link from '@/component/Link';
 
+import BaseModal from '@/component/modal/base';
+import InfoModal from '@/component/modal/InfoModal';
+
+function ComingSoonModal({ isOpen, onClose, children }: { isOpen: boolean, onClose: () => void, children: React.ReactNode }) {
+
+  return (
+    <BaseModal isOpen={isOpen} onClose={onClose} title="Coming Soon">
+      {children}
+    </BaseModal>
+  );
+}
+
 export default function Home() {
 
   const [ isInfoOpen, setIsInfoOpen ] = useState(false);
+  const [ isCommunityOpen, setIsCommunityOpen ] = useState(false);
+
   const [ email, setEmail ] = useState('');
   const [ submitting, setSubmitting ] = useState(false);
   const [ submitted, setSubmitted ] = useState(false);
@@ -31,7 +45,7 @@ export default function Home() {
     )}>
 
       <div className={clsx(
-        'w-full p-8',
+        'w-full px-8 py-4',
         'text-2xl text-right',
         'flex items-end justify-end'
       )}>
@@ -87,7 +101,6 @@ export default function Home() {
             <Button
               onClick={handleSubmit}
               isDisabled={email.length === 0 || submitting || submitted}
-              className="!w-1/3"
             >
               {submitting ? 'Submitting...' : submitted ? 'Email soon!' : 'Get Notified!'}
             </Button>
@@ -120,8 +133,8 @@ export default function Home() {
         <div className={clsx(
           'flex flex-row items-center gap-3'
         )}>
-          <Link href="#" onClick={() => {}}>discord</Link>
-          <Link href="#" onClick={() => {}}>github</Link>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>discord</Link>
+          <Link href="#" onClick={() => setIsCommunityOpen(true)}>github</Link>
         </div>
 
         <div className={clsx()}>
@@ -130,6 +143,10 @@ export default function Home() {
 
       </div>
 
+      <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
+      <ComingSoonModal isOpen={isCommunityOpen} onClose={() => setIsCommunityOpen(false)}>
+        <p>Community access coming April 2025.. Enter your email to get notified!</p>
+      </ComingSoonModal>
     </main>
   );
 }

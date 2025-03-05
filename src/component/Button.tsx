@@ -18,9 +18,9 @@ export default function Button({
   return (
     <button
       className={clsx(
-        'w-fit p-2 rounded-md cursor-pointer',
+        'w-fit p-2 cursor-pointer whitespace-nowrap',
         'flex items-center justify-center',
-        'border border-foreground',
+        'border border-foreground rounded-md',
         'hover:bg-foreground hover:text-background',
         'focus:outline-none focus:ring-none focus:ring-foreground',
         'transition-all duration-300 ease-in-out',

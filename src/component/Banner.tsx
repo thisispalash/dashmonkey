@@ -19,7 +19,7 @@ export default function Banner() {
 
       <div className="flex flex-row gap-6">
         <Link href="https://explorer.gitcoin.co/#/round/42220/28/30" className="text-sm hover:text-lg text-background">DeSci Round (Celo)</Link>
-        <Link href="https://explorer.gitcoin.co/#/round/42161/867/204" className="text-sm hover:text-lg text-background">Main Round (Arbitrum)</Link>
+        {/* <Link href="https://explorer.gitcoin.co/#/round/42161/867/204" className="text-sm hover:text-lg text-background">Main Round (Arbitrum)</Link> */}
       </div>
 
     </div>

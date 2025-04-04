@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cn } from '@/lib/cn';
 
 interface LinkProps {
   children: React.ReactNode;
@@ -27,7 +27,7 @@ export default function Link({
       href={href}
       role={isButton ? "button" : undefined}
       onClick={handleClick}
-      className={clsx(
+      className={cn(
         'flex items-center justify-center',
         'text-foreground relative group',
         'hover:text-xl hover:no-underline',
@@ -36,7 +36,7 @@ export default function Link({
       )}
     >
       {children}
-      <span className={clsx(
+      <span className={cn(
         'absolute left-0 right-0 bottom-0 h-[1px] bg-current',
         'scale-x-0 group-hover:scale-x-[0.8] origin-center',
         'transition-transform duration-300 ease-in-out translate-y-1'

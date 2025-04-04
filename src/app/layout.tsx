@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Syne_Mono } from 'next/font/google';
 import './globals.css';
 
+import Script from 'next/script';
+
 const syneMono = Syne_Mono({
   variable: '--font-default',
   subsets: ['latin'],
@@ -23,6 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <Script 
+      async 
+      src="/js/goat.js" 
+      data-goatcounter="https://monkey.goatcounter.com/count" 
+    />
       <link rel="icon" href="/circus-monkey.svg" />
       <body
         className={`

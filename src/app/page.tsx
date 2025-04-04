@@ -9,21 +9,13 @@ import InfoSVG from '@/component/icons/InfoSVG';
 import GithubSVG from '@/component/icons/GithubSVG';
 import DiscordSVG from '@/component/icons/DiscordSVG';
 
+import Banner from '@/component/Banner';
 import TextInput from '@/component/primitive/TextInput';
 import Button from '@/component/primitive/Button';
 import Link from '@/component/primitive/Link';
 
 import BaseModal from '@/component/modal/base';
 import InfoModal from '@/component/modal/InfoModal';
-
-function ComingSoonModal({ isOpen, onClose, children }: { isOpen: boolean, onClose: () => void, children: React.ReactNode }) {
-
-  return (
-    <BaseModal isOpen={isOpen} onClose={onClose} title="Coming Soon">
-      {children}
-    </BaseModal>
-  );
-}
 
 export default function Home() {
 
@@ -61,8 +53,10 @@ export default function Home() {
       'bg-blend-soft-light bg-white/95'
     )}>
 
+      <Banner />
+
       <div className={clsx(
-        'w-full pt-12 md:pt-8 pr-8 md:pr-4',
+        'w-full pt-28 md:pt-24 pr-8 md:pr-4',
         'text-2xl text-right',
         'flex items-end justify-end'
       )}>
@@ -111,7 +105,7 @@ export default function Home() {
               type="email"
               value={email}
               onChange={(value: string) => setEmail(value)}
-              placeholder="Public access coming April 2025"
+              placeholder="Public access coming May 2025"
               isDisabled={submitting || submitted}
             />
 
@@ -176,8 +170,17 @@ export default function Home() {
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
       <ComingSoonModal isOpen={isCommunityOpen} onClose={() => setIsCommunityOpen(false)}>
-        <p>Community access coming April 2025.. Enter your email to get notified!</p>
+        <p>Community access coming May 2025.. Enter your email to get notified!</p>
       </ComingSoonModal>
     </main>
+  );
+}
+
+function ComingSoonModal({ isOpen, onClose, children }: { isOpen: boolean, onClose: () => void, children: React.ReactNode }) {
+
+  return (
+    <BaseModal isOpen={isOpen} onClose={onClose} title="Coming Soon">
+      {children}
+    </BaseModal>
   );
 }

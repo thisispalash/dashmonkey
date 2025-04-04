@@ -7,13 +7,13 @@ export default function Banner() {
 
   return (
     <div className={cn(
-      'w-full h-auto py-2',
+      'w-full h-auto py-2 px-4',
       'fixed top-0 left-0',
       'flex flex-col items-center justify-center gap-2',
       'bg-foreground text-background',
     )}>
 
-      <span className="text-base">
+      <span className="text-sm md:text-base">
         Dash Mon[k]ey is participating in Gitcoin Grants Round 23! Consider donating to support our work..
       </span>
 

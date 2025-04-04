@@ -56,7 +56,7 @@ export default function Home() {
       <Banner />
 
       <div className={clsx(
-        'w-full pt-12 md:pt-8 pr-8 md:pr-4',
+        'w-full pt-28 md:pt-24 pr-8 md:pr-4',
         'text-2xl text-right',
         'flex items-end justify-end'
       )}>

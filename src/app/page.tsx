@@ -159,8 +159,8 @@ export default function Home() {
         </div>
 
         <div className={clsx()}>
-          {/* A product of <Link href="https://theslivers.com" className="inline-flex">Sliver Labs</Link> */}
-          A product of Sliver Labs
+          A product of <Link href="https://theslivers.com/hello" className="inline-flex" isExternal>Sliver Labs</Link>
+          {/* A product of Sliver Labs */}
         </div>
 
       </div>

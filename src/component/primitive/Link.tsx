@@ -5,6 +5,7 @@ interface LinkProps {
   href: string;
   onClick?: () => void;
   className?: string;
+  isExternal?: boolean;
 }
 
 
@@ -13,6 +14,7 @@ export default function Link({
   href,
   onClick,
   className,
+  isExternal = false,
 }: LinkProps) {
 
   const isButton = href === '#';
@@ -26,6 +28,7 @@ export default function Link({
     <a
       href={href}
       role={isButton ? "button" : undefined}
+      target={isExternal ? '_blank' : undefined}
       onClick={handleClick}
       className={cn(
         'flex items-center justify-center',

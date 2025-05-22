@@ -86,11 +86,11 @@ export default function Home() {
           </h1>
 
           <div className={clsx(
+            'mb-4',
             'text-base md:text-lg',
             'flex flex-col gap-1'
           )}>
-            <span>An onchain embodiment of your (financial) health,</span>
-            <span className="pl-2">in the form of a pet monkey</span>
+            <span className="pl-2">An onchain personification of your (financial) health</span>
           </div>
 
           <form className={clsx(

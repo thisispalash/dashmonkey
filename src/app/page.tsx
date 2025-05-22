@@ -9,7 +9,6 @@ import InfoSVG from '@/component/icons/InfoSVG';
 import GithubSVG from '@/component/icons/GithubSVG';
 import DiscordSVG from '@/component/icons/DiscordSVG';
 
-import Banner from '@/component/Banner';
 import TextInput from '@/component/primitive/TextInput';
 import Button from '@/component/primitive/Button';
 import Link from '@/component/primitive/Link';
@@ -53,8 +52,6 @@ export default function Home() {
       'bg-blend-soft-light bg-white/95'
     )}>
 
-      <Banner />
-
       <div className={clsx(
         'w-full pt-28 md:pt-24 pr-8 md:pr-4',
         'text-2xl text-right',
@@ -89,11 +86,11 @@ export default function Home() {
           </h1>
 
           <div className={clsx(
+            'mb-4',
             'text-base md:text-lg',
             'flex flex-col gap-1'
           )}>
-            <span>An onchain embodiment of your (financial) health,</span>
-            <span className="pl-2">in the form of a pet monkey</span>
+            <span className="pl-2">An onchain personification of your (financial) health</span>
           </div>
 
           <form className={clsx(
@@ -105,7 +102,7 @@ export default function Home() {
               type="email"
               value={email}
               onChange={(value: string) => setEmail(value)}
-              placeholder="Public access coming May 2025"
+              placeholder="Public access coming August 2025"
               isDisabled={submitting || submitted}
             />
 
@@ -117,6 +114,10 @@ export default function Home() {
             </Button>
 
           </form>
+
+          <div className="text-sm">
+            Watch an early preview on YouTube: <Link href="https://youtu.be/ThlMjkoRvD0?si=6Wb6Hw0FKmmz96QG" className="inline-flex font-bold" isExternal>https://youtu.be/ThlMjkoRvD0</Link>.
+          </div>
 
         </div>
 
@@ -162,15 +163,15 @@ export default function Home() {
         </div>
 
         <div className={clsx()}>
-          {/* A product of <Link href="https://theslivers.com" className="inline-flex">Sliver Labs</Link> */}
-          A product of Sliver Labs
+          A product of <Link href="https://theslivers.com/hello" className="inline-flex" isExternal>Sliver Labs</Link>
+          {/* A product of Sliver Labs */}
         </div>
 
       </div>
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
       <ComingSoonModal isOpen={isCommunityOpen} onClose={() => setIsCommunityOpen(false)}>
-        <p>Community access coming May 2025.. Enter your email to get notified!</p>
+        <p>Community access coming August 2025.. Enter your email to get notified!</p>
       </ComingSoonModal>
     </main>
   );

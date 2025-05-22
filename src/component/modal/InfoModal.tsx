@@ -3,6 +3,7 @@
 import { cn } from '@/lib/cn';
 
 import BaseModal from './base';
+import Link from '@/component/primitive/Link';
 
 interface InfoModalProps {
   isOpen: boolean;
@@ -19,9 +20,12 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
         'overflow-y-auto max-h-[80vh]'
       )}>
 
+        <p>
+          Watch an early preview on <Link href="https://youtu.be/ThlMjkoRvD0?si=6Wb6Hw0FKmmz96QG" className="inline-flex font-bold" isExternal>YouTube</Link>.
+        </p>
 
         <p>
-          <b>Dash Mon[k]ey</b> is an onchain tamagotchi that embodies your financial health. Inspired by behavioral science and the 90s craze of virtual pets, this project externalizes your <i>monkey brain</i> to help you visualize your habits and correct them, before it&apos;s too late.
+          <b>Dash Mon[k]ey</b> is an onchain tamagotchi that personifies your financial health. Inspired by behavioral science and the 90s craze of virtual pets, this project externalizes your <i>monkey brain</i> to help you visualize your habits and correct them, before it&apos;s too late.
         </p>
 
         <p>
@@ -35,7 +39,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
           </h2>
 
           <p>
-            The application is under active development and is expected to launch in May 2025. You can enter your email on the landing page to get notified when we do.
+            The application is under active development and is expected to launch in August 2025. You can enter your email on the landing page to get notified when we do.
           </p>
 
         </div>

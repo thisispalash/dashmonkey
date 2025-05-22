@@ -9,7 +9,6 @@ import InfoSVG from '@/component/icons/InfoSVG';
 import GithubSVG from '@/component/icons/GithubSVG';
 import DiscordSVG from '@/component/icons/DiscordSVG';
 
-import Banner from '@/component/Banner';
 import TextInput from '@/component/primitive/TextInput';
 import Button from '@/component/primitive/Button';
 import Link from '@/component/primitive/Link';
@@ -52,8 +51,6 @@ export default function Home() {
       'bg-[url(/circus-monkey.svg)] md:bg-none',
       'bg-blend-soft-light bg-white/95'
     )}>
-
-      <Banner />
 
       <div className={clsx(
         'w-full pt-28 md:pt-24 pr-8 md:pr-4',

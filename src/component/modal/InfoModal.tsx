@@ -25,7 +25,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
         </p>
 
         <p>
-          <b>Dash Mon[k]ey</b> is an onchain tamagotchi that embodies your financial health. Inspired by behavioral science and the 90s craze of virtual pets, this project externalizes your <i>monkey brain</i> to help you visualize your habits and correct them, before it&apos;s too late.
+          <b>Dash Mon[k]ey</b> is an onchain tamagotchi that personifies your financial health. Inspired by behavioral science and the 90s craze of virtual pets, this project externalizes your <i>monkey brain</i> to help you visualize your habits and correct them, before it&apos;s too late.
         </p>
 
         <p>

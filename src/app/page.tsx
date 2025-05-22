@@ -115,6 +115,10 @@ export default function Home() {
 
           </form>
 
+          <div className="text-sm">
+            Watch an early preview on YouTube: <Link href="https://youtu.be/ThlMjkoRvD0?si=6Wb6Hw0FKmmz96QG" className="inline-flex font-bold" isExternal>https://youtu.be/ThlMjkoRvD0</Link>.
+          </div>
+
         </div>
 
 

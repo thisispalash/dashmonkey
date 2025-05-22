@@ -35,7 +35,7 @@ export default function InfoModal({ isOpen, onClose }: InfoModalProps) {
           </h2>
 
           <p>
-            The application is under active development and is expected to launch in May 2025. You can enter your email on the landing page to get notified when we do.
+            The application is under active development and is expected to launch in August 2025. You can enter your email on the landing page to get notified when we do.
           </p>
 
         </div>

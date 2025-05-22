@@ -102,7 +102,7 @@ export default function Home() {
               type="email"
               value={email}
               onChange={(value: string) => setEmail(value)}
-              placeholder="Public access coming May 2025"
+              placeholder="Public access coming August 2025"
               isDisabled={submitting || submitted}
             />
 
@@ -167,7 +167,7 @@ export default function Home() {
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
       <ComingSoonModal isOpen={isCommunityOpen} onClose={() => setIsCommunityOpen(false)}>
-        <p>Community access coming May 2025.. Enter your email to get notified!</p>
+        <p>Community access coming August 2025.. Enter your email to get notified!</p>
       </ComingSoonModal>
     </main>
   );
